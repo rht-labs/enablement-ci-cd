@@ -1,0 +1,11 @@
+---
+openshift_cluster_content:
+- galaxy_requirements: "{{ inventory_dir }}/../galaxy_requirements.yml"
+- object: projectrequest
+  content:
+  - name: ci-cd
+    template: "{{ inventory_dir }}/../templates/project-requests.yml"
+    template_action: create
+    params: "{{ inventory_dir }}/../params/project-requests-ci-cd"
+    tags:
+    - projects
