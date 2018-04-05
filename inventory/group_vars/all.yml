@@ -1,6 +1,5 @@
 ---
 openshift_cluster_content:
-- galaxy_requirements: "{{ inventory_dir }}/../galaxy_requirements.yml"
 - object: projectrequest
   content:
   - name: ci-cd
