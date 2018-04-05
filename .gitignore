@@ -1,0 +1,8 @@
+casl-ansible
+roles/*
+*.pyc
+.idea
+.vscode
+*.iml
+gdsl
+*.retry
