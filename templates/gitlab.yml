@@ -20,7 +20,7 @@ objects:
         but allows users to run with any UID and any GID.
     name: anyuid
   users:
-  - system:serviceaccount:ci-cd:${APPLICATION_NAME}-user
+  - system:serviceaccount:${NAMESPACE}:${APPLICATION_NAME}-user
 - kind: ImageStream
   apiVersion: v1
   metadata:
@@ -535,3 +535,6 @@ parameters:
   displayName: redis volume size
   name: REDIS_VOL_SIZE
   value: 512Mi
+- description: Location of the service account user
+  displayName: service account user namespace, should be your ci-cd namespace
+  name: NAMESPACE
