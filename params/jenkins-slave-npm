@@ -1,0 +1,3 @@
+SOURCE_REPOSITORY_URL=<YOUR_ENABLEMENT_GIT_REPO>
+SOURCE_CONTEXT_DIR=docker/jenkins-slave-npm
+NAME=jenkins-slave-npm
