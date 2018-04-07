@@ -74,6 +74,8 @@ objects:
             value: "true"
           - name: OPENSHIFT_JENKINS_JVM_ARCH
             value: ${JVM_ARCH}
+          - name: JENKINS_OPTS
+            value: ${JENKINS_OPTS}
           - name: KUBERNETES_MASTER
             value: https://kubernetes.default:443
           - name: KUBERNETES_TRUST_CERTIFICATES
@@ -213,3 +215,7 @@ parameters:
   displayName: Jenkins ImageStreamTag
   name: JENKINS_IMAGE_STREAM_TAG
   value: jenkins:latest
+- description: Jenkins Arguments
+  displayName: Jenkins Arguments
+  name: JENKINS_OPTS
+  value: --sessionTimeout=0
