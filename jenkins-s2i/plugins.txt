@@ -151,3 +151,4 @@ xunit:1.102
 hue-light:1.2.0
 buildresult-trigger:0.17
 summary_report:1.15
+ws-cleanup:0.34
