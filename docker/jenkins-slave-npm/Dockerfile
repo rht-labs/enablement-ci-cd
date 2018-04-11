@@ -20,3 +20,6 @@ RUN yum remove -y rh-nodejs4; \
     rm -rf /var/cache/yum
 
 USER 1001
+
+RUN git config --global user.email "jenkins@ci-cd.com" && \
+    git config --global user.name "jenkins"
