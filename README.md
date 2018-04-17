@@ -10,9 +10,13 @@ Repository hosts the Labs Enablement material. It is a working skeleton that lea
 ```bash
 ansible-galaxy install -r requirements.yml --roles-path=roles
 ```
-1. Run the play book using
+1. Run the play book using this to create projects and roles
 ```bash
-ansible-playbook roles/openshift-applier/playbooks/openshift-cluster-seed.yml -i inventory/
+ansible-playbook apply.yml -i inventory/ -e target=bootstrap
+```
+1. Run the play book using this to create projects and roles
+```bash
+ansible-playbook apply.yml -i inventory/ -e target=tools
 ```
 
 ## Running a Subset of the Inventory
@@ -21,7 +25,7 @@ ansible-playbook roles/openshift-applier/playbooks/openshift-cluster-seed.yml -i
 2. The only required tag to deploy objects within the inventory is **projects**, all other tags are *optional*
 2. Here is an example that runs the tags that provision projects, ci, and jenkins objects:
 ```bash
-ansible-playbook roles/openshift-applier/playbooks/openshift-cluster-seed.yml \
+ansible-playbook apply.yml -e target=tools \
      -i inventory/ \
-     -e="filter_tags=jenkins,ci,projects"
+     -e "filter_tags=jenkins,ci,projects"
 ```

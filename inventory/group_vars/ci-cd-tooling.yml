@@ -1,0 +1,5 @@
+---
+ansible_connection: local
+openshift_cluster_content:
+- object: ci-cd-tooling
+  content:
