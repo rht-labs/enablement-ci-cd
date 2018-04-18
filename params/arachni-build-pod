@@ -1,0 +1,6 @@
+
+SOURCE_REPOSITORY_URL=https://github.com/neiln3121/arachni-xunit.git
+SOURCE_CONTEXT_DIR=./
+BUILDER_IMAGE_NAME=registry.access.redhat.com/openshift3/jenkins-slave-base-rhel7:latest
+NAME=arachni-build-pod
+SOURCE_REPOSITORY_REF=master
