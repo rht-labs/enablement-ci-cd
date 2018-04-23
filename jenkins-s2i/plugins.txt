@@ -63,6 +63,7 @@ openshift-login:1.0.8
 openshift-pipeline:1.0.54
 openshift-sync:1.0.10
 parameterized-trigger:2.35.2
+pipeline-aggregator-view:1.8
 pipeline-build-step:2.7
 pipeline-github-lib:1.0
 pipeline-graph-analysis:1.6
