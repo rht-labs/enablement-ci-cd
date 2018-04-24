@@ -11,7 +11,7 @@ metadata:
     tags: instant-app,jenkins
 objects:
 - apiVersion: v1
-  data:
+  stringData:
     password: "${SOURCE_REPOSITORY_PASSWORD}"
     username: "${SOURCE_REPOSITORY_USERNAME}"
   kind: Secret
