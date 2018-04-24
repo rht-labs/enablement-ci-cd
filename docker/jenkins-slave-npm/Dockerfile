@@ -18,6 +18,7 @@ RUN yum remove -y rh-nodejs4; \
       --enablerepo=rhel-server-rhscl-7-rpms \
       --enablerepo=rhel-7-server-optional-rpms \
       --enablerepo=rhel-7-server-optional-rpms \
+      --disablerepo=rhel-7-server-htb-rpms \
       $INSTALL_PKGS && \
     rpm -V $INSTALL_PKGS && \
     yum clean all -y && \
