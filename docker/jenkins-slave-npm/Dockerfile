@@ -2,7 +2,12 @@
 FROM registry.access.redhat.com/openshift3/jenkins-slave-base-rhel7
 USER root
 
-ENV PROMPT_COMMAND=". /usr/local/bin/scl_enable"
+ENV NODEJS_VERSION=8 \
+    NPM_CONFIG_PREFIX=$HOME/.npm-global \
+    PATH=$HOME/node_modules/.bin/:$HOME/.npm-global/bin/:$PATH \
+    BASH_ENV=/usr/local/bin/scl_enable \
+    ENV=/usr/local/bin/scl_enable \
+    PROMPT_COMMAND=". /usr/local/bin/scl_enable"
 COPY contrib/bin/scl_enable /usr/local/bin/scl_enable
 
 RUN yum remove -y rh-nodejs4; \
