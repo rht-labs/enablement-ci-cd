@@ -124,7 +124,7 @@ gitlab-logo:1.0.3
 gitlab-merge-request-jenkins:2.0.0
 gitlab-plugin:1.5.5
 gogs-webhook:1.0.14
-groovy-postbuild:2.4
+groovy-postbuild:2.3.1
 hue-light:1.2.0
 icon-shim:2.0.3
 javadoc:1.4
