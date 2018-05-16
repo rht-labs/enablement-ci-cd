@@ -66,8 +66,10 @@ objects:
           - containerPort: 8081
             protocol: TCP
           resources:
+            limit:
+              memory: ${MEMORY_LIMIT}
             requests:
-              memory: "${MEMORY_LIMIT}"
+              memory: 256Mi
           terminationMessagePath: "/dev/termination-log"
           volumeMounts:
           - mountPath: "/nexus-data"
@@ -138,7 +140,7 @@ parameters:
 - description: Maximum amount of memory the container can use.
   displayName: Memory Limit
   name: MEMORY_LIMIT
-  value: 512Mi
+  value: 1Gi
 - description: The Container Image to use for the ImageStream
   displayName: Nexus Container Image
   name: CONTAINER_IMAGE
