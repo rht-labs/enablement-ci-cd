@@ -1,0 +1,2 @@
+1. Having inventory specified in ansible.cfg means that playbook invocations don't have to run -i inventory
+2. Calling a role directly has a number of benefits, but mainly is important because this is how the documentation does it. Inclue and import should be reserved for cases like looking over roles
