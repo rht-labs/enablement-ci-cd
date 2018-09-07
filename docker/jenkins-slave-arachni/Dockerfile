@@ -3,7 +3,7 @@ FROM openshift/jenkins-slave-base-centos7:latest
 ARG VERSION=1.5.1
 ARG WEB_VERSION=0.5.12
 
-RUN yum install --disablerepo=rhel-7-server-htb-rpms -y wget ca-certificates
+RUN yum install -y wget ca-certificates
 
 WORKDIR /arachni
 
