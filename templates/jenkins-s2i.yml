@@ -1,6 +1,6 @@
 ---
 kind: Template
-apiVersion: v1
+apiVersion: template.openshift.io/v1
 metadata:
   name: jenkins-s2i
   annotations:
@@ -19,13 +19,13 @@ objects:
     name: gitlab-auth
   type: kubernetes.io/basic-auth
 - kind: ImageStream
-  apiVersion: v1
+  apiVersion: image.openshift.io/v1
   metadata:
     name: "${NAME}"
     annotations:
       description: Keeps track of changes in the application image
 - kind: ImageStream
-  apiVersion: v1
+  apiVersion: image.openshift.io/v1
   metadata:
     name: ${BUILDER_IMAGE_STREAM_NAME}
     annotations:
@@ -35,13 +35,13 @@ objects:
     - annotations: null
       from:
         kind: DockerImage
-        name: registry.access.redhat.com/openshift3/jenkins-2-rhel7:${BUILDER_IMAGE_STREAM_TAG_NAME}
+        name: registry.redhat.io/openshift4/ose-jenkins:${BUILDER_IMAGE_STREAM_TAG_NAME}
       importPolicy: {}
       name: ${BUILDER_IMAGE_STREAM_TAG_NAME}
       referencePolicy:
         type: Source
 - kind: BuildConfig
-  apiVersion: v1
+  apiVersion: build.openshift.io/v1
   metadata:
     name: "${NAME}"
     labels:
@@ -114,7 +114,7 @@ parameters:
   displayName: Builder Image Stream Tag Name
   description: The Jenkins builder Image Stream Tag Name (e.g. v3.9)
   required: true
-  value: v3.9 
+  value: "v4.1.0"
 - name: IMAGE_STREAM_NAMESPACE
   displayName: Builder ImageSteam Tag
   description: The namespace where the Jenkins builder Image Stream lives
