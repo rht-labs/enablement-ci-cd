@@ -29,14 +29,9 @@ metadata:
     openshift.io/support-url: https://access.redhat.com
     samples.operator.openshift.io/version: 4.1.0
     tags: database,mongodb
-  creationTimestamp: "2019-06-13T10:54:55Z"
   labels:
     samples.operator.openshift.io/managed: "true"
   name: mongodb-ephemeral
-  namespace: openshift
-  resourceVersion: "8993"
-  selfLink: /apis/template.openshift.io/v1/namespaces/openshift/templates/mongodb-ephemeral
-  uid: ad92704c-8dc9-11e9-8974-0a580a800014
 objects:
 - apiVersion: v1
   kind: Secret
