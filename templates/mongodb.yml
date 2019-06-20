@@ -1,5 +1,5 @@
 ---
-apiVersion: v1
+apiVersion: template.openshift.io/v1
 kind: Template
 labels:
   template: mongodb-ephemeral-template
@@ -20,7 +20,7 @@ metadata:
       WARNING: Any data stored will be lost upon pod destruction. Only use this template for testing
     iconClass: icon-mongodb
     openshift.io/display-name: MongoDB (Ephemeral)
-    openshift.io/documentation-url: https://docs.openshift.org/latest/using_images/db_images/mongodb.html
+    openshift.io/documentation-url: https://docs.okd.io/latest/using_images/db_images/mongodb.html
     openshift.io/long-description: This template provides a standalone MongoDB server
       with a database created.  The database is not stored on persistent storage,
       so any restart of the service will result in all data being lost.  The database
@@ -28,29 +28,32 @@ metadata:
       service.
     openshift.io/provider-display-name: Red Hat, Inc.
     openshift.io/support-url: https://access.redhat.com
+    samples.operator.openshift.io/version: 4.1.0
     tags: database,mongodb
+  labels:
+    samples.operator.openshift.io/managed: "true"
   name: mongodb-ephemeral
 objects:
 - apiVersion: v1
   kind: Secret
   metadata:
     annotations:
-      template.openshift.io/expose-admin_password: "{.data['database-admin-password']}"
-      template.openshift.io/expose-database_name: "{.data['database-name']}"
-      template.openshift.io/expose-password: "{.data['database-password']}"
-      template.openshift.io/expose-username: "{.data['database-user']}"
-    name: "${DATABASE_SERVICE_NAME}"
+      template.openshift.io/expose-admin_password: '{.data[''database-admin-password'']}'
+      template.openshift.io/expose-database_name: '{.data[''database-name'']}'
+      template.openshift.io/expose-password: '{.data[''database-password'']}'
+      template.openshift.io/expose-username: '{.data[''database-user'']}'
+    name: ${DATABASE_SERVICE_NAME}
   stringData:
-    database-admin-password: "${MONGODB_ADMIN_PASSWORD}"
-    database-name: "${MONGODB_DATABASE}"
-    database-password: "${MONGODB_PASSWORD}"
-    database-user: "${MONGODB_USER}"
+    database-admin-password: ${MONGODB_ADMIN_PASSWORD}
+    database-name: ${MONGODB_DATABASE}
+    database-password: ${MONGODB_PASSWORD}
+    database-user: ${MONGODB_USER}
 - apiVersion: v1
   kind: Service
   metadata:
     annotations:
       template.openshift.io/expose-uri: mongodb://{.spec.clusterIP}:{.spec.ports[?(.name=="mongo")].port}
-    name: "${DATABASE_SERVICE_NAME}"
+    name: ${DATABASE_SERVICE_NAME}
   spec:
     ports:
     - name: mongo
@@ -59,7 +62,7 @@ objects:
       protocol: TCP
       targetPort: 27017
     selector:
-      name: "${DATABASE_SERVICE_NAME}"
+      name: ${DATABASE_SERVICE_NAME}
     sessionAffinity: None
     type: ClusterIP
   status:
@@ -68,18 +71,18 @@ objects:
   kind: DeploymentConfig
   metadata:
     annotations:
-      template.alpha.openshift.io/wait-for-ready: 'true'
-    name: "${DATABASE_SERVICE_NAME}"
+      template.alpha.openshift.io/wait-for-ready: "true"
+    name: ${DATABASE_SERVICE_NAME}
   spec:
     replicas: 1
     selector:
-      name: "${DATABASE_SERVICE_NAME}"
+      name: ${DATABASE_SERVICE_NAME}
     strategy:
       type: Recreate
     template:
       metadata:
         labels:
-          name: "${DATABASE_SERVICE_NAME}"
+          name: ${DATABASE_SERVICE_NAME}
       spec:
         containers:
         - capabilities: {}
@@ -88,23 +91,23 @@ objects:
             valueFrom:
               secretKeyRef:
                 key: database-user
-                name: "${DATABASE_SERVICE_NAME}"
+                name: ${DATABASE_SERVICE_NAME}
           - name: MONGODB_PASSWORD
             valueFrom:
               secretKeyRef:
                 key: database-password
-                name: "${DATABASE_SERVICE_NAME}"
+                name: ${DATABASE_SERVICE_NAME}
           - name: MONGODB_ADMIN_PASSWORD
             valueFrom:
               secretKeyRef:
                 key: database-admin-password
-                name: "${DATABASE_SERVICE_NAME}"
+                name: ${DATABASE_SERVICE_NAME}
           - name: MONGODB_DATABASE
             valueFrom:
               secretKeyRef:
                 key: database-name
-                name: "${DATABASE_SERVICE_NAME}"
-          image: " "
+                name: ${DATABASE_SERVICE_NAME}
+          image: ' '
           imagePullPolicy: IfNotPresent
           livenessProbe:
             initialDelaySeconds: 30
@@ -118,31 +121,31 @@ objects:
           readinessProbe:
             exec:
               command:
-              - "/bin/sh"
-              - "-i"
-              - "-c"
+              - /bin/sh
+              - -i
+              - -c
               - mongo 127.0.0.1:27017/$MONGODB_DATABASE -u $MONGODB_USER -p $MONGODB_PASSWORD
                 --eval="quit()"
             initialDelaySeconds: 3
             timeoutSeconds: 1
           resources:
             limits:
-              memory: "${MEMORY_LIMIT}"
+              memory: ${MEMORY_LIMIT}
             requests:
               memory: 64Mi
           securityContext:
             capabilities: {}
             privileged: false
-          terminationMessagePath: "/dev/termination-log"
+          terminationMessagePath: /dev/termination-log
           volumeMounts:
-          - mountPath: "/var/lib/mongodb/data"
-            name: "${DATABASE_SERVICE_NAME}-data"
+          - mountPath: /var/lib/mongodb/data
+            name: ${DATABASE_SERVICE_NAME}-data
         dnsPolicy: ClusterFirst
         restartPolicy: Always
         volumes:
         - emptyDir:
-            medium: ''
-          name: "${DATABASE_SERVICE_NAME}-data"
+            medium: ""
+          name: ${DATABASE_SERVICE_NAME}-data
     triggers:
     - imageChangeParams:
         automatic: true
@@ -151,49 +154,51 @@ objects:
         from:
           kind: ImageStreamTag
           name: mongodb:${MONGODB_VERSION}
-          namespace: "${NAMESPACE}"
-        lastTriggeredImage: ''
+          namespace: ${NAMESPACE}
+        lastTriggeredImage: ""
       type: ImageChange
     - type: ConfigChange
   status: {}
 parameters:
-- name: MEMORY_LIMIT
+- description: Maximum amount of memory the container can use.
   displayName: Memory Limit
-  description: Maximum amount of memory the container can use.
+  name: MEMORY_LIMIT
+  required: true
   value: 512Mi
-  required: true
-- name: NAMESPACE
+- description: The OpenShift Namespace where the ImageStream resides.
   displayName: Namespace
-  description: The OpenShift Namespace where the ImageStream resides.
+  name: NAMESPACE
   value: openshift
-- name: DATABASE_SERVICE_NAME
+- description: The name of the OpenShift Service exposed for the database.
   displayName: Database Service Name
-  description: The name of the OpenShift Service exposed for the database.
+  name: DATABASE_SERVICE_NAME
+  required: true
   value: mongodb
-  required: true
-- name: MONGODB_USER
+- description: Username for MongoDB user that will be used for accessing the database.
   displayName: MongoDB Connection Username
-  description: Username for MongoDB user that will be used for accessing the database.
-  value: username
-  required: true
-- name: MONGODB_PASSWORD
-  displayName: MongoDB Connection Password
-  description: Password for the MongoDB connection user.
-  value: password
-  required: true
-- name: MONGODB_DATABASE
-  displayName: MongoDB Database Name
-  description: Name of the MongoDB database accessed.
-  value: sampledb
-  required: true
-- name: MONGODB_ADMIN_PASSWORD
-  displayName: MongoDB Admin Password
-  description: Password for the database admin user.
+  from: user[A-Z0-9]{3}
   generate: expression
-  from: "[a-zA-Z0-9]{16}"
+  name: MONGODB_USER
   required: true
-- name: MONGODB_VERSION
+- description: Password for the MongoDB connection user.
+  displayName: MongoDB Connection Password
+  from: '[a-zA-Z0-9]{16}'
+  generate: expression
+  name: MONGODB_PASSWORD
+  required: true
+- description: Name of the MongoDB database accessed.
+  displayName: MongoDB Database Name
+  name: MONGODB_DATABASE
+  required: true
+  value: sampledb
+- description: Password for the database admin user.
+  displayName: MongoDB Admin Password
+  from: '[a-zA-Z0-9]{16}'
+  generate: expression
+  name: MONGODB_ADMIN_PASSWORD
+  required: true
+- description: Version of MongoDB image to be used (3.6 or latest).
   displayName: Version of MongoDB Image
-  description: Version of MongoDB image to be used (2.4, 2.6, 3.2 or latest).
-  value: '3.2'
+  name: MONGODB_VERSION
   required: true
+  value: "3.6"
