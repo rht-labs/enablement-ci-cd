@@ -1,7 +1,7 @@
 ---
 ci_cd:
   NAMESPACE: "{{ namespace_prefix }}-ci-cd"
-  NAMESPACE_DISPLAY_NAME: "{{ namespace_prefix}}s CI/CD"
+  NAMESPACE_DISPLAY_NAME: "{{ namespace_prefix | title}}s CI/CD"
 
 dev:
 
