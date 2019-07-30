@@ -1,4 +1,12 @@
 ---
+ci_cd:
+  NAMESPACE: "{{ namespace_prefix }}-ci-cd"
+  NAMESPACE_DISPLAY_NAME: "{{ namespace_prefix}}s CI/CD"
+
+dev:
+
+test:
+
 ansible_connection: local
 openshift_cluster_content:
 - object: projectrequest
@@ -6,6 +14,6 @@ openshift_cluster_content:
   - name: "{{ ci_cd_namespace }}"
     template: "{{ playbook_dir }}/templates/project-requests.yml"
     action: create
-    params: "{{ playbook_dir }}/params/project-requests-ci-cd"
+    params_from_vars: "{{ ci_cd }}" 
     tags:
     - projects
