@@ -40,6 +40,22 @@ objects:
       name: ${BUILDER_IMAGE_STREAM_TAG_NAME}
       referencePolicy:
         type: Source
+- kind: ImageStream
+  apiVersion: v1
+  metadata:
+    labels:
+      role: jenkins-slave
+    name: jenkins-slave-npm
+    namespace: ${IMAGE_STREAM_NAMESPACE}
+  spec:
+    tags:
+    - annotations: null
+      from:
+        kind: DockerImage
+        name: openshift/jenkins-slave-npm
+      name: latest
+      referencePolicy:
+        type: Source
 - kind: BuildConfig
   apiVersion: v1
   metadata:
