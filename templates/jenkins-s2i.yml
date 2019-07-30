@@ -49,13 +49,10 @@ objects:
     namespace: ${IMAGE_STREAM_NAMESPACE}
   spec:
     tags:
-    - annotations: null
-      from:
+    - from:
         kind: DockerImage
         name: openshift/jenkins-slave-npm
       name: latest
-      referencePolicy:
-        type: Source
 - kind: BuildConfig
   apiVersion: v1
   metadata:
