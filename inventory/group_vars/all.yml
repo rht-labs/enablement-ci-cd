@@ -6,3 +6,10 @@
 #  - do NOT use special characters
 #  - make sure to replace the entire string between the double quotes - including the '<' and '>'
 namespace_prefix: "<YOUR_NAME>"
+
+# When the ocp_templates gets moved to cop land we can merge the two raws below
+openshift_templates_raw: "https://raw.githubusercontent.com/rht-labs/openshift-templates"
+openshift_templates_raw_version_tag: "v1.4.8"
+cop_quickstarts: "https://github.com/redhat-cop/containers-quickstarts.git"
+cop_quickstarts_raw: "https://raw.githubusercontent.com/redhat-cop/containers-quickstarts"
+cop_quickstarts_raw_version_tag: "v1.9"
