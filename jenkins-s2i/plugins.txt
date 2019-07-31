@@ -134,7 +134,6 @@ promoted-builds:2.27
 pubsub-light:1.12
 rabbitmq-consumer:2.2
 radiatorviewplugin:1.29
-rebuild:1.28
 rebuild:1.29
 resource-disposer:0.8
 ruby-runtime:0.12
