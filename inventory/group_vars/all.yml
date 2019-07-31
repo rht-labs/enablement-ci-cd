@@ -1,0 +1,8 @@
+---
+
+# Please change '<YOUR_NAME>' below to be unique for your deployment
+# Note:
+#  - keep it lowercase
+#  - do NOT use special characters
+#  - make sure to replace the entire string between the double quotes - including the '<' and '>'
+namespace_prefix: "<YOUR_NAME>"
