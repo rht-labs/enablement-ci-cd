@@ -1,0 +1,6 @@
+IMAGE_STREAM_NAME=jenkins-slave-npm
+IMAGE_STREAM_ROLE=jenkins-slave
+IMAGE_STREAM_TAG_FROM_NAME=openshift/jenkins-slave-npm
+IMAGE_STREAM_TAG_FROM_KIND=DockerImage
+IMAGE_STREAM_TAG_NAME=latest
+
