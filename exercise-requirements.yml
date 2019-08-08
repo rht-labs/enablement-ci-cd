@@ -1,0 +1,8 @@
+# This is the Ansible Galaxy requirements file to pull in the correct roles
+# to support the operation of openshift-applier run
+
+# From 'casl-ansible'
+- src: https://github.com/redhat-cop/casl-ansible
+  scm: git
+  version: v3.11.3
+  name: casl-ansible

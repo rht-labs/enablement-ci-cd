@@ -1,5 +1,7 @@
 ---
-ansible_connection: local
+
 openshift_cluster_content:
+- galaxy_requirements:
+  - "{{ inventory_dir }}/../exercise-requirements.yml"
 - object: ci-cd-tooling
   content:
