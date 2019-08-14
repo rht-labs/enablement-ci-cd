@@ -1,4 +1,5 @@
 ---
+ansible_connection: local
 
 openshift_cluster_content:
 - galaxy_requirements:
