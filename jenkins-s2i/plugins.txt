@@ -38,7 +38,7 @@ build-with-parameters:1.4
 buildgraph-view:1.8
 buildresult-trigger:0.17
 checkstyle:4.0.0
-claim:2.15
+claim:2.16
 cloudbees-bitbucket-branch-source:2.4.5
 cloudbees-folder:6.9
 cobertura:1.14
@@ -137,7 +137,6 @@ rabbitmq-consumer:2.8
 radiatorviewplugin:1.29
 rebuild:1.31
 resource-disposer:0.13
-ruby-runtime:0.12
 run-condition:1.2
 scm-api:2.6.3
 script-security:1.62
@@ -147,7 +146,7 @@ ssh-credentials:1.17.1
 structs:1.20
 subversion:2.12.2
 summary_report:1.15
-support-core:2.60
+support-core:2.67
 timestamper:1.10
 token-macro:2.8
 variant:1.3
