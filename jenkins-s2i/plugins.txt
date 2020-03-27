@@ -104,7 +104,7 @@ multiple-scms:0.6
 nexus-artifact-uploader:2.10
 nexus-jenkins-plugin:3.6.20190722-122200.83d1447
 openshift-client:1.0.32
-openshift-login:1.0.22
+openshift-login:1.0.23
 openshift-pipeline:1.0.56
 openshift-sync:1.0.44
 p4:1.10.3
@@ -140,7 +140,7 @@ resource-disposer:0.13
 run-condition:1.2
 scm-api:2.6.3
 script-security:1.64
-slack:2.29
+slack:2.37
 sse-gateway:1.19
 ssh-credentials:1.17.1
 structs:1.20
