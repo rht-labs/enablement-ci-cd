@@ -74,7 +74,7 @@ handlebars:1.1.1
 htmlpublisher:1.18
 hue-light:1.2.0
 icon-shim:2.0.3
-jackson2-api:2.9.9.1
+jackson2-api:2.10.0
 javadoc:1.5
 jenkins-design-language:1.18.1
 jira:3.0.8
