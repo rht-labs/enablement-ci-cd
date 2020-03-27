@@ -30,7 +30,7 @@ blueocean-web:1.16.0
 blueocean:1.16.0
 bouncycastle-api:2.17
 branch-api:2.5.4
-build-failure-analyzer:1.22.0
+build-failure-analyzer:1.24.1
 build-flow-plugin:0.10
 build-monitor-plugin:1.12+build.201809061734
 build-pipeline-plugin:1.5.8
@@ -139,7 +139,7 @@ rebuild:1.31
 resource-disposer:0.13
 run-condition:1.2
 scm-api:2.6.3
-script-security:1.62
+script-security:1.64
 slack:2.29
 sse-gateway:1.19
 ssh-credentials:1.17.1
