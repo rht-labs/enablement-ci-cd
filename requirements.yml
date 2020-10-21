@@ -2,8 +2,7 @@
 # to support the operation of openshift-applier runs
 
 # From 'openshift-applier'
-#- src: https://github.com/redhat-cop/openshift-applier
-- src: https://github.com/eformat/openshift-applier
+- src: https://github.com/redhat-cop/openshift-applier
   scm: git
-  version: v2.0.10-4.3
+  version: v2.1.2
   name: openshift-applier
