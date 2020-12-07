@@ -1,6 +1,7 @@
 ace-editor:1.1
 analysis-collector:2.0.0
 analysis-core:1.96
+ansicolor:0.6.2
 ant:1.9
 antisamy-markup-formatter:1.5
 apache-httpcomponents-client-4-api:4.5.5-3.0
@@ -140,7 +141,6 @@ resource-disposer:0.13
 run-condition:1.2
 scm-api:2.6.3
 script-security:1.64
-slack:2.37
 sse-gateway:1.19
 ssh-credentials:1.17.1
 structs:1.20
