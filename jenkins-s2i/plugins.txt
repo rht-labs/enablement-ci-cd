@@ -1,7 +1,6 @@
 ace-editor:1.1
 analysis-collector:2.0.0
 analysis-core:1.96
-ansicolor:0.6.2
 ant:1.9
 antisamy-markup-formatter:1.5
 apache-httpcomponents-client-4-api:4.5.5-3.0
@@ -69,6 +68,7 @@ github:1.29.4
 gitlab-logo:1.0.3
 gitlab-merge-request-jenkins:2.0.0
 gitlab-plugin:1.5.12
+greenballs:1.15
 groovy-postbuild:2.5
 handlebars:1.1.1
 htmlpublisher:1.18
