@@ -69,6 +69,7 @@ github:1.29.4
 gitlab-logo:1.0.3
 gitlab-merge-request-jenkins:2.0.0
 gitlab-plugin:1.5.12
+greenballs:1.15
 groovy-postbuild:2.5
 handlebars:1.1.1
 htmlpublisher:1.18
@@ -140,7 +141,6 @@ resource-disposer:0.13
 run-condition:1.2
 scm-api:2.6.3
 script-security:1.64
-slack:2.37
 sse-gateway:1.19
 ssh-credentials:1.17.1
 structs:1.20
